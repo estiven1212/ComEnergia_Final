@@ -16,7 +16,7 @@ const app = express();
 app.use(cors({
   origin: [
     "http://localhost:5173",           // desarrollo local
-    "https://comenergia.vercel.app"    // tu dominio de producción
+    "com-energia-final-eqn4.vercel.app"    // tu dominio de producción
   ],
   credentials: true
 }));
