@@ -26,7 +26,7 @@ export function logoutUser() {
 
 /* === Registro === */
 export async function registerUser(form) {
-  const res = await fetch(`${API_URL}api/users/register`, {
+  const res = await fetch(`${API_URL}/api/users/register`, {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify(form),
@@ -74,7 +74,7 @@ export async function crearSolicitud({ servicio, empresa, descripcion }) {
     userTelefono: user.telefono || user.celular || "",
   };
 
-  const res = await fetch(`${API_URL}api/solicitudes`, {
+  const res = await fetch(`${API_URL}/api/solicitudes`, {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify(body),
@@ -88,7 +88,7 @@ export async function crearSolicitud({ servicio, empresa, descripcion }) {
 export async function getSolicitudes() {
   const user = getCurrent();
   if (!user) return [];
-  const res = await fetch(`${API_URL}api/solicitudes/${encodeURIComponent(user.email)}`);
+  const res = await fetch(`${API_URL}/api/solicitudes/${encodeURIComponent(user.email)}`);
   const data = await res.json();
   if (!res.ok) throw new Error(data.message || "Error al obtener solicitudes");
   return data;
@@ -102,12 +102,12 @@ export async function saveRespuestaConArchivo(id, estado, respuesta, archivoFile
     form.append("respuesta", respuesta);
     form.append("archivo", archivoFile);
 
-    res = await fetch(`${API_URL}api/solicitudes/${id}/responder`, {
+    res = await fetch(`${API_URL}/api/solicitudes/${id}/responder`, {
       method: "PUT",
       body: form,
     });
   } else {
-    res = await fetch(`${API_URL}api/solicitudes/${id}/responder`, {
+    res = await fetch(`${API_URL}/api/solicitudes/${id}/responder`, {
       method: "PUT",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ estado, respuesta }),
@@ -121,13 +121,13 @@ export async function saveRespuestaConArchivo(id, estado, respuesta, archivoFile
 
 /* === Empresas === */
 export async function getEmpresas() {
-  const res = await fetch(`${API_URL}api/empresas`);
+  const res = await fetch(`${API_URL}/api/empresas`);
   const data = await res.json();
   return data;
 }
 
 export async function addEmpresa(empresaObj) {
-  const res = await fetch(`${API_URL}api/empresas/add`, {
+  const res = await fetch(`${API_URL}/api/empresas/add`, {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify(empresaObj),
@@ -139,7 +139,7 @@ export async function addEmpresa(empresaObj) {
 
 /* === Calificación === */
 export async function calificarSolicitud(id, calificacion) {
-  const res = await fetch(`${API_URL}api/solicitudes/${id}/calificar`, {
+  const res = await fetch(`${API_URL}/api/solicitudes/${id}/calificar`, {
     method: "PUT",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({ calificacion }),
@@ -150,7 +150,7 @@ export async function calificarSolicitud(id, calificacion) {
 }
 /* === Actualizar solicitud (estado y notas) === */
 export async function actualizarSolicitud(id, estado, notas, email) {
-  const res = await fetch(`${API_URL}api/solicitudes/${id}/actualizar`, {
+  const res = await fetch(`${API_URL}/api/solicitudes/${id}/actualizar`, {
     method: "PUT",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({ estado, notas, email }),
