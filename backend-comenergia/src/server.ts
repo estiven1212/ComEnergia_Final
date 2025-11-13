@@ -15,8 +15,8 @@ const app = express();
 // Configuración de CORS para que el front (Vite) pueda conectarse
 app.use(cors({
   origin: [
-    "http://localhost:5173",           // desarrollo local
-    "com-energia-final-eqn4.vercel.app"    // tu dominio de producción
+    "http://localhost:5173",          
+    "com-energia-final-eqn4.vercel.app"
   ],
   credentials: true
 }));
