@@ -30,5 +30,9 @@ app.use("/api/services", serviceRoutes); //nueva ruta
 import path from "path";
 app.use("/uploads", express.static(path.join(__dirname, "../uploads")));
 
+app.get("/api/health", (req, res) => {
+  res.status(200).json({status: "OK", message: "Servidor funcionando correctamente"});
+});
+
 const PORT = process.env.PORT || 4000;
 app.listen(PORT, () => console.log(`Servidor corriendo en http://localhost:${PORT}`));
