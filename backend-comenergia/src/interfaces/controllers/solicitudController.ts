@@ -126,7 +126,7 @@ export const responderSolicitud = async (req: Request, res: Response) => {
 };
 
 /* ===============================
-   📌 Calificar solicitud
+   Calificar solicitud
    =================================*/
 export const calificarSolicitud = async (req: Request, res: Response) => {
   try {
