@@ -7,13 +7,19 @@ import connectDB from "./config/db";
 import userRoutes from "./infrastructure/routes/UserRoutes";
 import solicitudRoutes from "./infrastructure/routes/solicitudRoutes";
 import empresaRoutes from "./infrastructure/routes/EmpresaRoutes";
-import serviceRoutes from "./infrastructure/routes/ServiceRoutes"; // ✅ nuevo
+import serviceRoutes from "./infrastructure/routes/ServiceRoutes"; //  nuevo
 
 dotenv.config();
 const app = express();
 
 // Configuración de CORS para que el front (Vite) pueda conectarse
-app.use(cors({ origin: "http://localhost:5173", credentials: true }));
+app.use(cors({
+  origin: [
+    "http://localhost:5173",           // desarrollo local
+    "https://comenergia.vercel.app"    // tu dominio de producción
+  ],
+  credentials: true
+}));
 app.use(bodyParser.json());
 app.use(express.json());
 
