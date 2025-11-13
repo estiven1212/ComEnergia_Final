@@ -16,13 +16,14 @@ const app = express();
 app.use(cors({
   origin: [
     "http://localhost:5173",
-    "https://com-energia-final-eqn4-hsvl1fyxh-estiven1212s-projects.vercel.app" // 👈 usa tu dominio Vercel completo y con https
+    "https://com-energia-final-eqn4-9sw7rosoz-estiven1212s-projects.vercel.app",
+    "https://com-energia-final.vercel.app", //
+    /^https:\/\/com-energia-final.*\.vercel\.app$/ //
   ],
-  credentials: true
+  credentials: true,
+  methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+  allowedHeaders: ['Content-Type', 'Authorization']
 }));
-app.use(bodyParser.json());
-app.use(express.json());
-
 // Conectar a MongoDB Atlas
 connectDB();
 
